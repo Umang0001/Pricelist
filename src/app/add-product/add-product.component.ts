@@ -22,7 +22,7 @@ export class AddProductComponent {
     name:["",Validators.required],
     buyPrice:["",Validators.required],
     sellPrice:["",Validators.required],
-    notes:["",Validators.required]
+    notes:[""]
   })
 
   handleAdd(){

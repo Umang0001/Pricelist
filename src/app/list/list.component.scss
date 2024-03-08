@@ -21,7 +21,9 @@ th,td{
 }
 
 .table-holder{
-    overflow-x: auto;
+    overflow: auto;
+    max-height: 60vh;
+
 }
 tr:nth-child(odd){
     // color: white;
