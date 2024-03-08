@@ -1,0 +1,30 @@
+<div class="main" *ngIf="filteredList$ | async as productList">
+    <div class="table-holder" *ngIf="productList?.length ; else noProducts ">
+        <table class="products-table">
+            <tr class="heading">
+                <th class="name">Name</th>
+                <th>Buy Price</th>
+                <th>Sell Price</th>
+                <th>Notes</th>
+                <th>Actions</th>
+            </tr>
+            <tr *ngFor="let product of productList"  class="product">
+                <td>{{product.name}}</td>
+                <td>{{product.buyPrice}}</td>
+                <td>{{product.sellPrice}}</td>
+                <td>{{product.notes}}</td>
+                <td class="actions"><button class="edit" (click)="setEditProduct(product)">Edit</button><button class="delete" (click)="deleteProduct(product.id)">Delete</button></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="btn-wrapper">
+    <button class="action" class="add-new" (click)="handleFormVisibility()">Add New</button>
+</div>
+
+<app-add-product (setFormVisibility)="setFormVisibility($event)" *ngIf="visibleForm==='add'"></app-add-product>
+<app-edit-product (setFormVisibility)="setFormVisibility($event)" *ngIf="visibleForm==='edit'" [product]="editProduct"></app-edit-product>
+
+<ng-template #noProducts>
+    <p class="no-products">No products to display</p>
+</ng-template>

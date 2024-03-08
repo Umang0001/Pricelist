@@ -1,0 +1,21 @@
+<div class="form-wrapper">
+    <div class="edit-product-wrapper">
+            <h2>Edit Product</h2>
+            <form [formGroup]="productForm" (submit)="handleEdit()">
+                <div class="field">
+                    <input type="text" placeholder="Enter product name..." formControlName="name">
+                </div>
+                <div class="field">
+                    <input type="number" placeholder="Enter buy price..." formControlName="buyPrice">
+                </div>
+                <div class="field">
+                    <input type="number" placeholder="Enter sell price..." formControlName="sellPrice">
+                </div>
+                <div class="field">
+                    <input type="text" placeholder="Enter notes..." formControlName="notes">
+                </div>
+                <button>Edit</button>
+            </form>
+            <span class="close" (click)="closePopup()"></span>
+     </div>
+</div>

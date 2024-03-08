@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.field{
+    margin-bottom: 10px;
+}
+
+.form-wrapper{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.445);
+
+    > div{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        padding: 25px;
+        background-color: white;
+        width: 100%;
+        max-width: 300px;
+        border-radius: 15px;
+
+        h2{
+            margin-bottom: 10px;
+        }
+    }
+
+    form{
+        width: 100%;
+        input{
+            padding: 8px;
+            width: 100%;
+        }
+        button{
+            padding: 5px 10px;
+        }
+    }
+    .close{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        height: 21px;
+        width: 23px;
+        cursor: pointer;
+        &::after,&::before{
+            content: "";
+            height: 100%;
+            width: 2px;
+            background: black;
+            position: absolute;
+            transform: translateX(-50%) rotate(45deg);
+            left: 50%;
+        }
+        &::after{
+            transform: translateX(-50%) rotate(-45deg);
+        }
+    }
+}

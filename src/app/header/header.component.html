@@ -1,0 +1,7 @@
+<header class="header">
+    <h1>Pricelist</h1>
+    <div class="details">
+        <p>Total Products : <span *ngIf="productCount$ | async as productCount">{{productCount}}</span></p>
+        <input class="search" placeholder="Search products here..." type="text" #search (input)="handleSearch(search.value)">
+    </div>
+</header>
