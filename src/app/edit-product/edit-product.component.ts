@@ -28,7 +28,7 @@ export class EditProductComponent {
     name:["",Validators.required],
     buyPrice:["",Validators.required],
     sellPrice:["",Validators.required],
-    notes:["",Validators.required]
+    notes:[""]
   })
 
   handleEdit(){
