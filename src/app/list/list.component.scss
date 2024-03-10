@@ -1,13 +1,9 @@
+@import '../../extends.scss';
 .actions{
     border: none;
     white-space: nowrap;
     button{
-        padding: 5px;
-        cursor: pointer;
-        border: none !important;
-        color: white;
-        background: none !important;
-        color: #000000;
+        @extend custom-button;
         &.edit{
             margin-right: 5px;
         }
@@ -46,14 +42,11 @@ tr.heading{
 }
 
 .add-new{
+    @extend custom-button;
     display: block;
     margin: auto;
     margin-top: 15px;
     padding: 8px;
-    background-color: #202e52;
-    color: white;
-    border: none;
-    border-radius: 8px;
 }
 .no-products{
     text-align: center;

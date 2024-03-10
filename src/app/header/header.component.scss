@@ -1,3 +1,4 @@
+@import '../../extends.scss';
 h1{
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -26,12 +27,7 @@ header{
         button{
             display: block;
             width: 100%;
-            background-color: #202e52;
-            color: white;
-            border: none;
-            padding: 6px;
-            border-radius: 4px;
-            cursor: pointer;
+            @extend custom-button;
             &:first-child{
                 margin-bottom: 5px;
             }
@@ -44,12 +40,9 @@ div.import{
     flex-direction: column;
     gap: 10px;
     button{
+        @extend custom-button;
         align-self: start;
         padding: 5px;
-        background-color: #202e52;
-        color: white;
-        border: none;
-        border-radius: 4px;
         margin-top: 10px;
     }
 }
