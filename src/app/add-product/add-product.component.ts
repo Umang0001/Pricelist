@@ -3,11 +3,12 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { ProductService } from '../product.service';
 import { Product } from '../interfaces/interface';
 import { FirebaseService } from '../firebase.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule],
+  imports: [FormsModule,ReactiveFormsModule,CommonModule],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.scss'
 })
@@ -18,14 +19,17 @@ export class AddProductComponent {
 
   @Output() setFormVisibility= new EventEmitter();
 
+  onceSubmitted : boolean = false;
+
   productForm=this.formBuilder.group({
     name:["",Validators.required],
-    buyPrice:["",Validators.required],
-    sellPrice:["",Validators.required],
+    buyPrice:[""],
+    sellPrice:[""],
     notes:[""]
   })
 
   handleAdd(){
+    this.onceSubmitted = true
     if (this.productForm.valid) {
 
       let formValue=this.productForm.value;

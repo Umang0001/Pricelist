@@ -3,11 +3,12 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { ProductService } from '../product.service';
 import { Product } from '../interfaces/interface';
 import { FirebaseService } from '../firebase.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-edit-product',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule],
+  imports: [FormsModule,ReactiveFormsModule,CommonModule],
   templateUrl: './edit-product.component.html',
   styleUrl: './edit-product.component.scss'
 })
@@ -18,6 +19,8 @@ export class EditProductComponent {
   productService=inject(ProductService)
   firebaseService=inject(FirebaseService)
 
+  onceSubmitted : boolean = false;
+
   ngOnInit(){
     this.productForm.get('name')?.setValue(this.product.name)
     this.productForm.get('buyPrice')?.setValue(this.product.buyPrice.toString())
@@ -26,13 +29,13 @@ export class EditProductComponent {
   }
   productForm=this.formBuilder.group({
     name:["",Validators.required],
-    buyPrice:["",Validators.required],
-    sellPrice:["",Validators.required],
+    buyPrice:[""],
+    sellPrice:[""],
     notes:[""]
   })
 
   handleEdit(){
-    
+    this.onceSubmitted = true;
     if (this.productForm.valid) {
       let formValue=this.productForm.value;
       let product={
