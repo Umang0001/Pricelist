@@ -4,6 +4,7 @@
             <form [formGroup]="productForm" (submit)="handleEdit()">
                 <div class="field">
                     <input type="text" placeholder="Enter product name..." formControlName="name">
+                    <p [ngClass]="(productForm.controls.name.invalid && productForm.controls.name.touched)|| (this.onceSubmitted===true && productForm.controls.name.invalid)?'':'hidden'" class="error">Required field.</p>
                 </div>
                 <div class="field">
                     <input type="number" placeholder="Enter buy price..." formControlName="buyPrice">
