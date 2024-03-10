@@ -38,5 +38,15 @@ export class ProductService {
     
   }
 
+   removeDuplicates(array1:Product[], array2:Product[]) {
+    // Create a set to store unique IDs from the first array
+    const idSet = new Set(array1.map(obj => obj.id));
+    
+    // Filter out objects from the second array whose IDs are not present in the set
+    const uniqueElements = array2.filter(obj => !idSet.has(obj.id));
+    
+    return uniqueElements;
+}
+
     
 }

@@ -1,7 +1,32 @@
 <header class="header">
     <h1>Pricelist</h1>
     <div class="details">
-        <p>Total Products : <span *ngIf="productCount$ | async as productCount">{{productCount}}</span></p>
-        <input class="search" placeholder="Search products here..." type="text" #search (input)="handleSearch(search.value)">
+        <p>Total Products : <span>{{productCount$  | async}}</span>
+        </p>
+        
+        <input class="search" placeholder="Search products here..." type="text" #search
+            (input)="handleSearch(search.value)">
     </div>
+    <!-- app.component.html -->
+<div class="excel-actions">
+    <button (click)="setShowImportPopup(true)">Import Data</button>
+    <div *ngIf="productList$ | async as productList">
+        <button *ngIf="productList.length > 0" (click)="downloadExcel(productList)">Download Data</button>
+    </div>
+</div>
+
 </header>
+
+
+
+
+<ng-container *ngIf="showImportPopup">
+    <div *ngIf="productList$ | async as productList" class="form-wrapper">
+        <div class="import">
+            <h2>Select a CSV/XLS file.</h2>
+            <input type="file" #file >
+            <button (click)="importData(file,productList)">Import</button>
+            <span class="close" (click)="setShowImportPopup(false)"></span>
+        </div>
+    </div>
+</ng-container>

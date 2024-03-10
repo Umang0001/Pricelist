@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, setDoc } from '@angular/fire/firestore';
 import { Product } from './interfaces/interface';
-import { BehaviorSubject, Observable, from } from 'rxjs';
+import { BehaviorSubject, Observable, forkJoin, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +38,16 @@ export class FirebaseService {
 
   setSearchText(newText:string){
     this.searchText.next(newText);
+  }
+
+  addProducts(products: Product[]): Observable<string[]> {
+    const addPromises: Promise<string>[] = [];
+  
+    products.forEach(product => {
+      const promise = addDoc(this.productsCollection, product).then(res => res.id);
+      addPromises.push(promise);
+    });
+  
+    return from(forkJoin(addPromises));
   }
 }
