@@ -19,7 +19,7 @@ export class ListComponent {
   constructor(){
     this.filteredList$ = combineLatest(this.productList$,this.searchValue$).pipe(
       map(([productList,searchValue]:[Product[],string])=>{
-        return productList.filter((product:Product)=>product.name.includes(searchValue))
+        return productList.filter((product:Product)=>product.name.includes(searchValue) || product.notes.includes(searchValue))
       })
     )
   }
