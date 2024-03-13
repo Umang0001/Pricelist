@@ -43,7 +43,6 @@ body{
         input{
             padding: 8px;
             width: 100%;
-            border: 1px solid rgb(118, 118, 118)
         }
         button{
             @extend custom-button;
@@ -81,4 +80,8 @@ body{
 
 .hidden{
     display: none;
+}
+
+input{
+    border: 1px solid rgb(118, 118, 118);
 }

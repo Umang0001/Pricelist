@@ -34,10 +34,6 @@ export class ProductService {
     this.productList.set(newList)
   }
 
-  searchProduct(value:string){
-    
-  }
-
    removeDuplicates(array1:Product[], array2:Product[]) {
     // Create a set to store unique IDs from the first array
     const idSet = new Set(array1.map(obj => obj.id));
