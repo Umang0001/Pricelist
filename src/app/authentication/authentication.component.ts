@@ -12,7 +12,6 @@ export class AuthenticationComponent {
   signIn(password : string){
     if (password === "123") {
       this.setIsAuthenticated.emit(true);
-      localStorage.setItem("authenticated","true")
       return;
     }
     alert("wrong password!")

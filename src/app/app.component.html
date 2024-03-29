@@ -1,9 +1,9 @@
-<ng-container *ngIf="isAuthenticated ; else auth">
+<ng-container *ngIf="isAuthenticated">
     <app-header></app-header>
     <app-list></app-list>
 </ng-container>
 
 
-<ng-template #auth>
+<ng-container #auth *ngIf="!isAuthenticated">
     <app-authentication (setIsAuthenticated)="setIsAuthenticated($event)"></app-authentication>
-</ng-template>
+</ng-container>

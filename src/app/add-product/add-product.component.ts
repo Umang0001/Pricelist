@@ -21,7 +21,7 @@ export class AddProductComponent {
 
   onceSubmitted : boolean = false;
 
-  productForm=this.formBuilder.group({
+  productForm=this.formBuilder.nonNullable.group({
     name:["",Validators.required],
     buyPrice:[""],
     sellPrice:[""],
@@ -32,11 +32,11 @@ export class AddProductComponent {
     this.onceSubmitted = true
     if (this.productForm.valid) {
 
-      let formValue=this.productForm.value;
+      let formValue=this.productForm.getRawValue();
       let product={
         name:formValue.name!.toString(),
-        buyPrice:Number(formValue.buyPrice),
-        sellPrice:Number(formValue.sellPrice),
+        buyPrice: formValue.buyPrice,
+        sellPrice: formValue.sellPrice,
         notes:formValue.notes!
       }
       this.firebaseService.addProduct(product).subscribe((id:string)=>{

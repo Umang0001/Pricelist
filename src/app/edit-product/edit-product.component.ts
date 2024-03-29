@@ -22,12 +22,12 @@ export class EditProductComponent {
   onceSubmitted : boolean = false;
 
   ngOnInit(){
-    this.productForm.get('name')?.setValue(this.product.name)
-    this.productForm.get('buyPrice')?.setValue(this.product.buyPrice.toString())
-    this.productForm.get('sellPrice')?.setValue(this.product.sellPrice.toString())
-    this.productForm.get('notes')?.setValue(this.product.notes)
+    this.productForm.get('name')?.setValue(this.product?.name)
+    this.productForm.get('buyPrice')?.setValue(this.product.buyPrice?.toString())
+    this.productForm.get('sellPrice')?.setValue(this.product.sellPrice?.toString())
+    this.productForm.get('notes')?.setValue(this.product?.notes)
   }
-  productForm=this.formBuilder.group({
+  productForm=this.formBuilder.nonNullable.group({
     name:["",Validators.required],
     buyPrice:[""],
     sellPrice:[""],
@@ -36,13 +36,15 @@ export class EditProductComponent {
 
   handleEdit(){
     this.onceSubmitted = true;
+    
+    console.log(this.productForm.value);
     if (this.productForm.valid) {
-      let formValue=this.productForm.value;
+      let formValue=this.productForm.getRawValue();
       let product={
         id:this.product.id,
         name:formValue.name!.toString(),
-        buyPrice:Number(formValue.buyPrice),
-        sellPrice:Number(formValue.sellPrice),
+        buyPrice: formValue.buyPrice,
+        sellPrice: formValue.sellPrice,
         notes:formValue.notes!
       }
       this.firebaseService.editProduct(product).subscribe(res=>{

@@ -13,7 +13,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  isAuthenticated : boolean = JSON.parse(localStorage.getItem("authenticated")!) || false;
+  isAuthenticated : boolean =  false;
 
   setIsAuthenticated(value:boolean){
     this.isAuthenticated = value;
