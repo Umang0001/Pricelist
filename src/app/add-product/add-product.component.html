@@ -7,10 +7,10 @@
                 <p [ngClass]="(productForm.controls.name.invalid && productForm.controls.name.touched)|| (this.onceSubmitted===true && productForm.controls.name.invalid)?'':'hidden'" class="error">Required field.</p>
             </div>
             <div class="field">
-                <input type="text" inputmode="numeric" placeholder="Enter buy price..." formControlName="buyPrice">
+                <input type="text" placeholder="Enter buy price..." formControlName="buyPrice">
             </div>
             <div class="field">
-                <input type="text" inputmode="numeric" placeholder="Enter sell price..." formControlName="sellPrice">
+                <input type="text" placeholder="Enter sell price..." formControlName="sellPrice">
             </div>
             <div class="field">
                 <input type="text" placeholder="Enter notes..." formControlName="notes">
